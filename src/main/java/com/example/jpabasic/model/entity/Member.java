@@ -20,8 +20,9 @@ import lombok.*;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // 헷갈리면 알아서 해주세요...
-//    @GeneratedValue(strategy = GenerationType.IDENTITY) - 교안에는 이걸로...
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE) - 가장 많이 쓰는 타입
+    // IDENTITY - SEQUENCE => 결과적인 작동형태가 같음
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) - 교안에는 이걸로... (가장 많이 쓰는 타입, auto increment)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE) - sequence -> 그걸 추적
 //    @GeneratedValue(strategy = GenerationType.UUID) - 오늘 최종 실습
     private Long id;
     private String name;
