@@ -27,6 +27,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA
 	runtimeOnly 'com.h2database:h2' // 메모리 상에서 돌아가는 DB (별도 설치가 X)
 
+    // lombok
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    // implementation 'org.projectlombok:lombok:1.18.38'
+    // 플러그인 설치 필수!
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
     // ...?
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
