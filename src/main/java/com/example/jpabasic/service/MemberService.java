@@ -4,11 +4,16 @@ import com.example.jpabasic.model.entity.Member;
 import com.example.jpabasic.model.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor // 이걸로 자동으로 의존성 주입을 해버림
+@Transactional(readOnly = true) // 읽어들여오기 때문에 기본적으로는 transaction x.
+// 성능 최적화
 public class MemberService {
-    private final MemberRepository memberRepository;
+    private final MemberRepository memberRepository; // DB
 
     // 생성자 주입
 //    public MemberService(MemberRepository memberRepository) {
@@ -20,4 +25,18 @@ public class MemberService {
 //        newMember.setName("김자바");
 //        this.memberRepository.save(newMember);
 //    }
+
+    // CRUD : Create(Insert), Read(Select), Update, Delete (SQL DML)
+    // 읽기, 쓰기
+
+    @Transactional // 쓰기 작업을 할 때 중간에 오류 발생 시 롤백.
+    public Member saveMember(Member member) {
+        return memberRepository.save(member);
+        // member -> controller -> ?
+    }
+
+    // 읽기 전용으로 최적화
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
+    }
 }
