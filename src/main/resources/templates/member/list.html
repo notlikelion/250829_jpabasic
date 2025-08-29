@@ -14,6 +14,7 @@
     <!-- #lists.isEmpty(members) : members가 비었다면 -->
     <!-- !#lists.isEmpty(members) : members가 '안' 비었다면 -->
     <ul th:if="${!#lists.isEmpty(members)}">
+    <!-- unless로 뒤집어도 된다 / ! -->
         <li th:each="member : ${members}">
             <span th:text="${member.id}"></span>
             <span th:text="${member.name}"></span>
