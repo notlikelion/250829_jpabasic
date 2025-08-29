@@ -14,8 +14,8 @@ import lombok.*;
 //@RequiredArgsConstructor // final로 되어 있는 것들을 만들어주는 생성자 entity 용 아님
 //@AllArgsConstructor // 모든 프로퍼티
 @Data // @Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode
-@NoArgsConstructor // new Member()
-@AllArgsConstructor // new Member(... - 필드들을 직접 만들어서 넣을 때)
+// @NoArgsConstructor // new Member()
+// @AllArgsConstructor // new Member(... - 필드들을 직접 만들어서 넣을 때)
 // 생성자는 뭔가 직접 정의를 하면 기본 생성자는 비활성화된다 -> 직접 추가해줘야함
 public class Member {
     @Id
