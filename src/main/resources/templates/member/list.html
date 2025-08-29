@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원 목록</title>
+</head>
+<body>
+    <!-- @{} : contextPath -> 외부에 올린다 -> localhost, render, aws... -->
+    <!-- /app/members/new...? -->
+    <a th:href="@{/members/new}">신규회원 등록</a>
+    <!-- #lists.isEmpty(members) : members가 비었다면 -->
+    <!-- !#lists.isEmpty(members) : members가 '안' 비었다면 -->
+    <ul th:if="${!#lists.isEmpty(members)}">
+        <li th:each="member : ${members}">
+            <span th:text="${member.id}"></span>
+            <span th:text="${member.name}"></span>
+        <!-- th:text : html 태그를 넣어도 텍스트 그자체로 인식 (textContent) -->
+        <!-- xss (cross site script) 방지 -->
+        </li>
+    </ul>
+    <p th:if="${#lists.isEmpty(members)}">
+        등록된 회원 없음!
+    </p>
+</body>
+</html>
